@@ -16,8 +16,11 @@ const HeroSection = () => {
     setError('');
     setShortUrl('');
 
+    
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     try {
-      const response = await axios.post('http://localhost:5050/save', { longUrl });
+      const response = await axios.post(`${backendUrl}/save`, { longUrl });
+
       if (response.data.ok) {
         setShortUrl(response.data.shortURL);
       }
